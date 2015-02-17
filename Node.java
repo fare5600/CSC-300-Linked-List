@@ -1,0 +1,68 @@
+public class Node 
+
+	{
+
+	private Node nextNode;
+
+	private int payload;
+
+	public Node(int payload)
+
+	{
+
+	this.payload = payload;
+
+	this.nextNode = null;
+
+	}
+
+	 
+
+	public Node getNextNode() 
+
+	{
+
+	return this.nextNode;
+
+	}
+
+	 
+
+	public void setNextNode(Node nextNode) 
+
+	{
+
+	this.nextNode = nextNode;
+
+	}
+
+	 
+
+	public int getPayload() {
+
+	return payload;
+
+	}
+
+
+
+	public void add(Node n) 
+	{
+		
+		if(this.nextNode ==null)
+			{
+			this.nextNode = n;
+			// TODO Auto-generated method stub
+			}
+		else
+		{
+	this.nextNode.add(n);
+		
+		}
+
+	}
+	}
+
+
+
+
