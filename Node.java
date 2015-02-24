@@ -75,6 +75,13 @@ public class Node
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	public Node getPrevNode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	}
 
 

@@ -206,7 +206,10 @@ return this.removeFront();
 }
 else
 {
-head = null;
+Node curr = tail;
+tail = curr.getPrevNode();
+curr.setPrevNode(null);
+
 this.count--;
 return RemoveEnd();
 }	
@@ -253,10 +256,26 @@ public Node removeFront() throws Exception
 	{
 		throw new Exception("Can Not remove Front: Empty List");
 	}
-Node currNode = head;
-head = head.getNextNode();
-currNode.setNextNode(null);
-return currNode.getPayload();
+	else if (this.count ==1)
+	{
+		Node payloadToReturn = this.head.getPayload();
+		this.head = null;
+		this.tail = null;
+		this.count = 0;
+		return payloadToReturn;
+	}
+	else
+	{
+		Node curr = head;
+		curr.getNextNode().setPrevNode(null);
+		head = curr.getNextNode();
+		curr.setNextNode(curr);
+	}
+//Node currNode = head;
+//head=head.getNextNode();
+//currNode.setNextNode(null);
+//return currNode.getPayload();
+	return head;
 
 	}
 }
