@@ -3,6 +3,7 @@ public class LinkedList
 {
 
 private Node head;
+private Node tail;
 
 private int count;
 
@@ -11,59 +12,64 @@ public LinkedList()
 {
 
 this.head = null;
-
+this.tail = null;
 this.count = 0;
 
 }
 
-public int get(int index)
+public Node get(int index)
 
 {
 
-int count = this.count();
-
-if(index >= count || index < 0)
+//int count = this.count();
+{
+	if(index==0)
+	{
+		return head;
+	}
+	else if (index==this.length()-1)
+	{
+		return tail;
+	}
+	else if(index < 0 || index > this.length()-1)
+	{
+		System.out.println("index out of bounds");
+	}
+	else
+	{
+		Node currNode= head;
+		for (int i = 0; i < index; i++);
+		{
+			currNode = currNode.getNextNode();
+		}
+	return currNode;
+	}
+	
+//if(index >= count || index < 0)
 
 {
-
-System.out.println("Illegal Index");
-
-return -1;
-
+//System.out.println("Illegal Index");
+//return -1;
 }
-
-else
-
+//else
+//{
+//Node curr = head;
+//for(int i = 0; i < index; i++)
 {
-
-Node curr = head;
-
-for(int i = 0; i < index; i++)
-
+//curr = curr.getNextNode();
+}
+//return curr.getPayload();
+}
+//return count;
+return head;
+}
+//public int count()
 {
-
-curr = curr.getNextNode();
-
-}
-
-return curr.getPayload();
-
-}
-
-}
-
-public int count()
-
-{
-
-return this.count;
-
+//return this.count;
 }
 
 public void display()
-
 {
-
 if(head == null)
 
 {
@@ -136,10 +142,9 @@ public void addFront(int payload)
 Node n = new Node(payload);
 
 if(head == null)
-
 {
 
-head = n;
+tail = n;
 
 }
 
@@ -193,12 +198,62 @@ currNode.setNextNode(n);
 this.count++;
 
 }
-public int removeEnd() throws Exception
-{
-	
-}
 
-public int removeFront() throws Exception
+public Node removeEnd() throws Exception
+
+{
+if(head == null)
+{
+throw new Exception("Can Not Remove End: Empty List");
+}
+else if(this.count == 1)
+{
+return this.removeFront();
+}
+else
+{
+head = null;
+this.count--;
+return RemoveEnd();
+}	
+}
+private Node RemoveEnd() {
+	// TODO Auto-generated method stub
+	return null;
+}
+public Node removeAtIndex(int index) throws Exception 
+{
+	if(tail==0)
+	{
+		return(null);
+	}
+		Node currNode = tail;
+		try {
+			return this.removeFront();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	else if(index == this.length()-1)
+	{
+		return this.removeEnd();
+	}
+	else if (index < 0 || index> this.length())
+	{
+		Node nodeToRemove = head;
+		Node currNode= head;
+		for (int i = 0; i < index -1; i++)
+		{
+			currNode = currNode.getNextNode();
+		}
+		nodeToRemove= currNode.getNextNode();
+		currNode.setNextNode(nodeToRemove.getNextNode());
+		nodeToRemove.setNextNode(null); 
+	}
+	return head;
+}
+public Node removeFront() throws Exception
 {
 	if(head == null)
 	{
@@ -211,3 +266,4 @@ return currNode.getPayload();
 
 	}
 }
+

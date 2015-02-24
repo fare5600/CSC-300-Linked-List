@@ -4,9 +4,9 @@ public class Node
 
 	private Node nextNode;
 
-	private int payload;
+	private Node payload;
 
-	public Node(int payload)
+	public Node(Node payload)
 
 	{
 
@@ -17,6 +17,12 @@ public class Node
 	}
 
 	 
+
+	public Node(int payload2) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public Node getNextNode() 
 
@@ -38,7 +44,7 @@ public class Node
 
 	 
 
-	public int getPayload() {
+	public Node getPayload() {
 
 	return payload;
 
