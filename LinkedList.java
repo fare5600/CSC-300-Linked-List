@@ -143,7 +143,7 @@ Node n = new Node(payload);
 
 if(head == null)
 {
-
+head = n;
 tail = n;
 
 }
@@ -153,8 +153,11 @@ else
 {
 
 n.setNextNode(head);
+head.setPrevNode(head);
+
 
 head = n;
+tail = n;
 
 }
 
@@ -173,25 +176,16 @@ if(this.head == null)
 {
 
 this.head = n;
-
+this.head = n;
 }
 
 else
 
 {
 
-
-Node currNode = this.head;
-
-while(currNode.getNextNode() != null)
-
-{
-
-currNode = currNode.getNextNode();
-
-}
-
-currNode.setNextNode(n);
+tail.setNextNode(n);
+n.setPrevNode(tail);
+tail = n;
 
 }
 
@@ -223,7 +217,7 @@ private Node RemoveEnd() {
 }
 public Node removeAtIndex(int index) throws Exception 
 {
-	if(tail==0)
+	if(tail==null)
 	{
 		return(null);
 	}
@@ -234,20 +228,20 @@ public Node removeAtIndex(int index) throws Exception
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	else if(index == this.length()-1)
+	
+	 if(index == this.length()-1)
 	{
 		return this.removeEnd();
 	}
 	else if (index < 0 || index> this.length())
 	{
 		Node nodeToRemove = head;
-		Node currNode= head;
+		Node currNodes= head;
 		for (int i = 0; i < index -1; i++)
 		{
-			currNode = currNode.getNextNode();
+			currNodes = currNodes.getNextNode();
 		}
-		nodeToRemove= currNode.getNextNode();
+		nodeToRemove= currNodes.getNextNode();
 		currNode.setNextNode(nodeToRemove.getNextNode());
 		nodeToRemove.setNextNode(null); 
 	}

@@ -67,6 +67,14 @@ public class Node
 		}
 
 	}
+
+
+
+	public void setPrevNode(Node head) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
 	}
 
 
