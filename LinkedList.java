@@ -2,10 +2,10 @@ public class LinkedList
 
 {
 
-private Node head;
+protected Node head;
 private Node tail;
 
-private int count;
+protected int count;
 
 public LinkedList()
 
