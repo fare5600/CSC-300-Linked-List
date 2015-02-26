@@ -1,28 +1,44 @@
 
 public class Stack extends LinkedList
 {
+	private Node top;
+	
+
 	public Stack()
 	
 	{
-		super();
+		this.top = null;
 	}
 
 	public void push(int payload)
 	{
+		Node n = new Node(payload);
+		if(this.top==null)
+		{this.top=n;
+		
+		}
+		else
+		{
+			n.setNextNode(this.top);
+			this.top=n;
+		}
 		addFront(payload);
 	
 	}
-	public void push(char payload)
-	{
-		this.addFront(payload);
-	}
+	
 	public Node pop() throws Exception
 	{
 		return this.removeFront();
 	}
-	public Node peek()
+	public Node peek() throws Exception
 	{
-		return this.get(0);
+		if(this.top==null)
+	{
+		throw new Exception("No stack");
+	}
+		return top;
+	
+		
 	}
 	public void addFront(int payload) 
 	{
