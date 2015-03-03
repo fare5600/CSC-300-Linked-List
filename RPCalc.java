@@ -39,6 +39,15 @@ if(val.equalsIgnoreCase("quit"))
 {
 break;
 }
+else if(val.equalsIgnoreCase("sum"))
+{
+	int sum = 0;
+	while(!this.theStack.isEmpty())
+	{
+		sum = sum + this.theStack.pop() + this.theStack.pop();
+	}
+	this.theStack.push(sum);
+}
 else if(val.equalsIgnoreCase("show"))
 {
 if(this.theStack.isEmpty())
