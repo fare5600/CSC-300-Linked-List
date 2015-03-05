@@ -8,11 +8,6 @@ this.theStack = new Stack();
 }
 private boolean isNumber(String s)
 {
-	String map = "0123456789";
-	if(s.charAt(0) == '+' || s.charAt(0) =='-')
-	{
-		s = s.substring(1);
-	}
 try
 {
 Integer.parseInt(s);
@@ -38,6 +33,29 @@ String val = input.nextLine().trim();
 if(val.equalsIgnoreCase("quit"))
 {
 break;
+}
+else if(val.equalsIgnoreCase("del"))
+{
+	this.theStack.pop();
+}
+else if(val.equalsIgnoreCase("avg"))
+{
+	int sum = 0;
+	int count = 0;
+	int tempNum;
+	Stack tempStack = new Stack();
+	while(!this.theStack.isEmpty())
+	{
+		tempNum= this.theStack.pop();
+		sum += tempNum;
+		tempStack.push(tempNum);
+		count++;
+	}
+	while(!tempStack.isEmpty())
+	{
+		this.theStack.push(tempStack.pop());
+	}
+	this.theStack.push(sum/count);
 }
 else if(val.equalsIgnoreCase("sum"))
 {
